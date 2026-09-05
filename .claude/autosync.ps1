@@ -6,8 +6,19 @@ $repo = Split-Path -Parent $PSScriptRoot
 $log = Join-Path $PSScriptRoot 'autosync.log'
 $lock = Join-Path $PSScriptRoot 'autosync.lock'
 
+# 로그 파일이 잠겨 있어도(다른 프로세스가 열고 있거나 OneDrive가 잡고 있어도)
+# 동기화 자체는 계속되어야 한다. 몇 번 재시도하고 안 되면 조용히 포기한다.
 function Write-Log($msg) {
-    "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')  $msg" | Add-Content -Path $log -Encoding utf8
+    $line = "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')  $msg"
+    for ($i = 0; $i -lt 3; $i++) {
+        try {
+            Add-Content -Path $log -Value $line -Encoding utf8 -ErrorAction Stop
+            return
+        }
+        catch {
+            Start-Sleep -Milliseconds 200
+        }
+    }
 }
 
 # --- git이 멈추지 않게 하는 설정 -----------------------------------------------
@@ -50,11 +61,16 @@ function Get-GhPath {
 # push 앞에만 붙이는 자격증명 옵션.
 # 첫 번째 -c 가 기존 헬퍼 목록을 비우고, 두 번째가 gh를 대신 세운다.
 # gh가 없으면 빈 배열 — 원래 설정 그대로 시도한다(성공할 수도 있으므로 막지는 않는다).
+#
+# 경로를 감쌀 때 반드시 '작은따옴표'를 쓴다. 큰따옴표를 쓰면 Windows PowerShell 5.1이
+# 네이티브 명령에 인자를 넘기면서 따옴표를 벗겨버려, git에는 경로가 공백에서 잘린 채
+# 도착한다("C:/Program" 이 명령어로 해석됨). 헬퍼가 조용히 실패하고 push가 인증 없이
+# 끝난다. 값은 git이 sh로 실행하므로 작은따옴표를 그대로 이해한다.
 function Get-PushArgs {
     $gh = Get-GhPath
     if (-not $gh) { return @() }
     $p = $gh.Replace('\', '/')
-    return @('-c', 'credential.helper=', '-c', "credential.helper=!`"$p`" auth git-credential")
+    return @('-c', 'credential.helper=', '-c', "credential.helper=!'$p' auth git-credential")
 }
 
 function Sync-Repo {
