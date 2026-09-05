@@ -6,7 +6,7 @@ Claude Code가 상황에 맞춰 자동으로 불러 쓰는 작업 절차서입�
 | 스킬 | 언제 쓰나 | 무엇을 하나 |
 |---|---|---|
 | [interview](interview/SKILL.md) | 요청이 흐릿할 때 | 구조화된 질문으로 요구사항을 끌어냄 |
-| [goal](goal/SKILL.md) | 방향은 있는데 기준이 없을 때 | 측정 가능한 목표와 완료 조건으로 변환 |
+| [define-goal](define-goal/SKILL.md) | 방향은 있는데 기준이 없을 때 | 측정 가능한 목표와 완료 조건으로 변환 |
 | [grillme](grillme/SKILL.md) | 계획을 검증하고 싶을 때 | 근거를 붙여 가장 혹독하게 반박 |
 | [sdd](sdd/SKILL.md) | 여러 파일에 걸친 기능·리팩터링 | 명세 먼저 확정하고 그 기준으로 구현·검수 |
 | [tdd](tdd/SKILL.md) | 로직 구현·버그 수정 | 실패하는 테스트 → 최소 구현 → 정리 |
@@ -14,7 +14,7 @@ Claude Code가 상황에 맞춰 자동으로 불러 쓰는 작업 절차서입�
 ## 보통의 흐름
 
 ```
-interview  →  goal  →  grillme  →  sdd  →  tdd
+interview  →  define-goal  →  grillme  →  sdd  →  tdd
 요구사항 파악   기준 확정   구멍 찾기   명세 작성   구현
 ```
 

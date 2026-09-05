@@ -98,4 +98,4 @@ BLUE  <무엇을 정리했는지> → 3 passed
 ## 연계
 
 - 무엇을 테스트해야 할지 모르겠으면 [sdd](../sdd/SKILL.md)의 수용 기준이 곧 테스트 목록이다.
-- 완료 기준이 흐릿하면 [goal](../goal/SKILL.md).
+- 완료 기준이 흐릿하면 [define-goal](../define-goal/SKILL.md).

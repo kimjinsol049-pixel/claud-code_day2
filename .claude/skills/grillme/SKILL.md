@@ -81,4 +81,4 @@ description: 사용자의 계획·설계·주장·코드를 일부러 가장 혹
 ## 연계
 
 - 계획 자체가 흐릿하면 먼저 [interview](../interview/SKILL.md)로 명확히 한다.
-- 목표가 측정 불가능해서 반박이 안 되면 [goal](../goal/SKILL.md)로 보낸다.
+- 목표가 측정 불가능해서 반박이 안 되면 [define-goal](../define-goal/SKILL.md)로 보낸다.
