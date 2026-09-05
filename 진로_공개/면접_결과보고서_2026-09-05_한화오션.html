@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모의 면접 결과 보고서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@500;700&display=swap">
+<style>
+:root{
+  --ground:#F4F6F7; --surface:#FFFFFF; --surface-sunk:#EAEEF0;
+  --ink:#101A22; --ink-soft:#3A4A55; --steel:#5A6E7A; --steel-faint:#8698A3;
+  --rule:#D3DBDF; --rule-strong:#B4C1C8;
+  --arc:#C25A16; --arc-soft:#F3E3D6;
+  --scan:#0E7C86; --scan-soft:#DCEDEE;
+  --crit:#A32017; --crit-soft:#F7E2E0;
+  --ok:#2C6B48; --ok-soft:#DEEBE3;
+  --display:"Noto Serif KR","Nanum Myeongjo",serif;
+  --body:"IBM Plex Sans KR","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono","D2Coding",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D141A; --surface:#141E26; --surface-sunk:#1B2831;
+    --ink:#E6EDF1; --ink-soft:#B7C6D0; --steel:#8FA3AF; --steel-faint:#697D89;
+    --rule:#26353F; --rule-strong:#384A56;
+    --arc:#F0873C; --arc-soft:#3A2415; --scan:#4FBCC5; --scan-soft:#0F3034;
+    --crit:#F08078; --crit-soft:#3A1B18; --ok:#6FC195; --ok-soft:#15301F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D141A; --surface:#141E26; --surface-sunk:#1B2831;
+  --ink:#E6EDF1; --ink-soft:#B7C6D0; --steel:#8FA3AF; --steel-faint:#697D89;
+  --rule:#26353F; --rule-strong:#384A56;
+  --arc:#F0873C; --arc-soft:#3A2415; --scan:#4FBCC5; --scan-soft:#0F3034;
+  --crit:#F08078; --crit-soft:#3A1B18; --ok:#6FC195; --ok-soft:#15301F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased}
+.wrap{max-width:900px; margin:0 auto; padding:0 24px 96px}
+
+.masthead{padding:52px 0 30px; border-bottom:3px solid var(--ink)}
+.eyebrow{font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--arc); display:flex; flex-wrap:wrap; gap:6px 14px; margin-bottom:18px}
+.eyebrow span:not(:last-child)::after{content:" ·"; color:var(--steel-faint)}
+h1{font-family:var(--display); font-weight:700; font-size:clamp(32px,5.6vw,46px); line-height:1.18; letter-spacing:-.02em; margin:0 0 18px; text-wrap:balance}
+.thesis{font-size:clamp(16px,2.2vw,18px); line-height:1.65; color:var(--ink-soft); max-width:60ch; margin:0; font-weight:300}
+.thesis b{font-weight:600; color:var(--ink); box-shadow:inset 0 -.45em 0 var(--arc-soft)}
+
+/* score hero */
+.score{display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:center; padding:28px 0; border-bottom:1px solid var(--rule)}
+@media(max-width:620px){.score{grid-template-columns:1fr; gap:18px}}
+.score-num{font-family:var(--mono); font-variant-numeric:tabular-nums; line-height:1}
+.score-num b{font-size:72px; font-weight:600; letter-spacing:-.04em; color:var(--arc)}
+.score-num span{font-size:22px; color:var(--steel)}
+.score-note{font-size:14.5px; color:var(--ink-soft); line-height:1.6; max-width:52ch}
+.score-note strong{color:var(--ink)}
+
+.bars{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule); margin:22px 0 0}
+.bar-row{background:var(--surface); padding:12px 16px; display:grid; grid-template-columns:110px 1fr 68px; gap:14px; align-items:center}
+@media(max-width:620px){.bar-row{grid-template-columns:92px 1fr 60px; gap:10px; padding:11px 12px}}
+.bar-label{font-size:13.5px; font-weight:500}
+.bar-track{height:9px; background:var(--surface-sunk); border-radius:2px; overflow:hidden}
+.bar-fill{height:100%; border-radius:2px}
+.bar-val{font-family:var(--mono); font-size:13px; font-variant-numeric:tabular-nums; text-align:right; color:var(--steel)}
+.bar-val b{color:var(--ink); font-size:15px}
+
+section{margin-top:56px; scroll-margin-top:20px}
+.sec-head{display:flex; align-items:baseline; gap:13px; margin-bottom:6px; flex-wrap:wrap}
+.sec-num{font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.08em; padding-top:.35em}
+h2{font-family:var(--display); font-weight:700; font-size:clamp(23px,3.6vw,30px); margin:0; line-height:1.3; letter-spacing:-.015em; text-wrap:balance}
+.sec-sub{color:var(--steel); font-size:14.5px; margin:0 0 24px; max-width:62ch; line-height:1.6}
+h3{font-family:var(--display); font-weight:700; font-size:19px; margin:30px 0 10px; line-height:1.4}
+p{margin:0 0 14px; max-width:66ch}
+strong{font-weight:600}
+code{font-family:var(--mono); font-size:.88em; background:var(--surface-sunk); padding:.1em .35em; border-radius:3px}
+:focus-visible{outline:2px solid var(--arc); outline-offset:3px; border-radius:2px}
+
+.item{border-left:3px solid var(--rule-strong); padding:2px 0 2px 18px; margin:0 0 26px}
+.item--good{border-color:var(--ok)}
+.item--bad{border-color:var(--crit)}
+.item--warn{border-color:var(--arc)}
+.item h3{margin-top:0}
+.item p:last-child{margin-bottom:0}
+
+.quote{font-family:var(--mono); font-size:13.5px; line-height:1.65; background:var(--surface); border:1px solid var(--rule); padding:12px 15px; margin:12px 0; max-width:none}
+.quote--said{border-left:3px solid var(--crit)}
+.quote--fix{border-left:3px solid var(--ok)}
+.qlabel{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--steel); display:block; margin-bottom:6px}
+
+.scroller{overflow-x:auto; border:1px solid var(--rule); background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:14px}
+th,td{padding:11px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--rule)}
+thead th{font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--steel); background:var(--surface-sunk); border-bottom:1px solid var(--rule-strong); white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-sunk)}
+td.mono{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+.tbl-note{font-size:12.5px; color:var(--steel); line-height:1.55; margin:8px 0 0; max-width:70ch}
+
+.box{padding:19px 23px; margin:22px 0}
+.box p{margin:0 0 10px; max-width:62ch} .box p:last-child{margin-bottom:0}
+.box .tag{font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px}
+.box--crit{background:var(--crit-soft); border-left:4px solid var(--crit)} .box--crit .tag{color:var(--crit)}
+.box--ok{background:var(--ok-soft); border-left:4px solid var(--ok)} .box--ok .tag{color:var(--ok)}
+.box--scan{background:var(--scan-soft); border-left:4px solid var(--scan)} .box--scan .tag{color:var(--scan)}
+.box--arc{background:var(--arc-soft); border-left:4px solid var(--arc)} .box--arc .tag{color:var(--arc)}
+
+.rule-card{background:var(--surface); border:2px solid var(--arc); padding:22px 24px; margin:24px 0}
+.rule-card .tag{font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--arc); display:block; margin-bottom:10px}
+.rule-card p{font-family:var(--display); font-size:19px; font-weight:500; line-height:1.5; margin:0; max-width:54ch}
+
+.plan{list-style:none; margin:0; padding:0; display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.plan li{background:var(--surface); padding:14px 16px; display:grid; grid-template-columns:88px 1fr; gap:14px; align-items:start}
+@media(max-width:620px){.plan li{grid-template-columns:1fr; gap:4px}}
+.plan .when{font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.06em; color:var(--arc); padding-top:3px}
+.plan .what{font-size:14.5px; line-height:1.6}
+.plan .what small{display:block; color:var(--steel); font-size:12.5px; margin-top:3px; line-height:1.5}
+
+footer{margin-top:72px; padding-top:24px; border-top:1px solid var(--rule); font-size:13px; color:var(--steel); line-height:1.65}
+footer p{max-width:70ch}
+footer .fine{font-family:var(--mono); font-size:11.5px; color:var(--steel-faint); margin-top:14px}
+@media print{body{background:#fff} table{min-width:0} section,.item{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow"><span>모의 면접 결과</span><span>한화오션 스마트야드연구</span><span>2026.09.05</span></div>
+  <h1>면접 결과 보고서</h1>
+  <p class="thesis">
+    1차 면접(비대면) 8문항. 총점은 낮지만 <b>실력이 낮아서가 아닙니다.</b>
+    가진 것을 말하지 않아서 생긴 실점이고, 그건 <b>이번 주에 고칠 수 있습니다.</b>
+  </p>
+</header>
+
+<div class="score">
+  <div class="score-num"><b>55</b><span> / 100</span></div>
+  <p class="score-note">
+    <strong>"지금 지원했다면"의 점수입니다.</strong> 실제 지원은 2027년 하반기이고,
+    감점 항목의 대부분은 능력이 아니라 <strong>준비 방식</strong>의 문제라 12개월 안에 회복됩니다.
+    특히 구체성과 직무 이해는 가장 빨리 오르는 축입니다.
+  </p>
+</div>
+
+<div class="bars">
+  <div class="bar-row">
+    <span class="bar-label">직무 이해</span>
+    <span class="bar-track"><span class="bar-fill" style="width:40%;background:var(--crit)"></span></span>
+    <span class="bar-val"><b>8</b> / 20</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">깊이</span>
+    <span class="bar-track"><span class="bar-fill" style="width:68%;background:var(--ok)"></span></span>
+    <span class="bar-val"><b>17</b> / 25</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">구체성</span>
+    <span class="bar-track"><span class="bar-fill" style="width:30%;background:var(--crit)"></span></span>
+    <span class="bar-val"><b>6</b> / 20</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">지원 동기</span>
+    <span class="bar-track"><span class="bar-fill" style="width:33%;background:var(--crit)"></span></span>
+    <span class="bar-val"><b>5</b> / 15</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">정직성</span>
+    <span class="bar-track"><span class="bar-fill" style="width:100%;background:var(--ok)"></span></span>
+    <span class="bar-val"><b>10</b> / 10</span>
+  </div>
+  <div class="bar-row">
+    <span class="bar-label">태도</span>
+    <span class="bar-track"><span class="bar-fill" style="width:90%;background:var(--ok)"></span></span>
+    <span class="bar-val"><b>9</b> / 10</span>
+  </div>
+</div>
+<p class="tbl-note">정직성 만점, 태도 9점. <strong>사람으로서의 평가는 최상위입니다.</strong> 깎인 곳은 전부 "말하는 방식"입니다.</p>
+
+<!-- 01 -->
+<section id="good">
+  <div class="sec-head"><span class="sec-num" style="color:var(--ok)">01</span><h2>잘한 점</h2></div>
+  <p class="sec-sub">유지해야 할 것들입니다. 훈련으로 얻기 어려운 성질이 섞여 있습니다.</p>
+
+  <div class="item item--good">
+    <h3>정직성 — 만점, 그리고 가장 큰 자산</h3>
+    <p>세 번 모두 정직했습니다. <em>"직접 분할한 것은 아니지만"</em> · <em>"해보지 않아 정확하지는 않겠지만 제 추측을 말씀드리자면"</em> · <em>"너무 전에 한 것이라 기억이 나지 않습니다"</em></p>
+    <p><strong>면접에서 가장 크게 무너지는 방식이 "아는 척했다가 꼬리 질문에 걸리는 것"입니다.</strong> 그 위험이 구조적으로 없습니다. 이건 연습으로 만들기 어렵습니다. 그대로 유지하세요.</p>
+  </div>
+
+  <div class="item item--good">
+    <h3>개념을 정확히 알고 있다</h3>
+    <p>세그멘테이션을 <strong>semantic / instance / panoptic</strong> 3분류로 답했습니다. 용어 나열이 아니라 실제 구분입니다. 학부생 중에 이걸 나눠서 말하는 사람은 많지 않습니다.</p>
+  </div>
+
+  <div class="item item--good">
+    <h3>지적을 받고 바로 다음 답변에 반영했다 — 오늘 최고점</h3>
+    <p>"뭉뚱그리는 게 감점"이라는 지적 뒤, 다음 질문에서 형식을 바꿔 답했습니다.</p>
+    <div class="quote quote--fix">
+      <span class="qlabel">최고 답변</span>
+      "해보지 않아 정확하지는 않겠지만 제 추측을 말씀드리자면, <strong>입력되지 않은 라벨이 많기 때문에</strong> … 라벨이 아직 붙여지지 않은 부분은 인식 가능하도록 학습하면 야드 내의 공간을 인식할 수 있을 것으로 보입니다."
+    </div>
+    <p><strong>세 가지가 다 있습니다.</strong> ① 추측임을 먼저 밝힘 ② 근거를 붙임 ③ 결론까지 감. <strong>모르는 것을 다루는 정석</strong>이고, 이 형식을 다른 질문에도 그대로 쓰면 됩니다.</p>
+  </div>
+
+  <div class="item item--good">
+    <h3>압박에서 방어적으로 변하지 않았다</h3>
+    <p>모순을 정면으로 지적당했을 때 변명하지 않고 왜 그렇게 말했는지를 설명했습니다. 실전에서 여기서 무너지는 지원자가 많습니다.</p>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="bad">
+  <div class="sec-head"><span class="sec-num" style="color:var(--crit)">02</span><h2>부족한 점</h2></div>
+
+  <div class="item item--bad">
+    <h3>1. 자기 경험 저평가 — 오늘 실점의 대부분</h3>
+    <p><strong>본인이 규칙을 두 번 말로 진술했습니다.</strong></p>
+    <div class="quote quote--said">
+      <span class="qlabel">본인 진술</span>
+      "결과가 나오지 않았기 때문에 <strong>부족하여</strong> 그렇게 말씀을 드렸습니다."<br><br>
+      "<strong>전문성이 아직 없다고 판단하여</strong> 적지 않았습니다."
+    </div>
+    <p>판단 기준이 <strong>"완성했는가"</strong>에 걸려 있습니다. 그런데 면접관이 보는 것은 <strong>"어디까지 갔는가"</strong>입니다.</p>
+
+    <div class="scroller" style="margin:14px 0">
+      <table>
+        <thead><tr><th>실제로 가진 것</th><th>본인이 말한 방식</th><th>알아낸 방법</th></tr></thead>
+        <tbody>
+          <tr><td><strong>S3DIS × MMDetection3D</strong> 실행, 부분 형상 확인</td><td>"직접은 해보지 못했습니다"</td><td class="mono">3단계 추궁</td></tr>
+          <tr><td><strong>UR5e</strong> 로봇팔 자동화</td><td>자기소개에서 스치듯</td><td class="mono">되물어서</td></tr>
+          <tr><td>연구실 <strong>객체인식</strong></td><td><strong>아예 언급 안 함</strong></td><td class="mono">서류를 보고 지적</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>최상급 재료 3개가 전부 캐물어서 나왔습니다.</strong> 자기소개에 남은 것은 "첨단 기술로 최적화하는 일이 잘 맞는 것 같다"와 "의지와 열정을 가지고 열심히 하겠습니다"뿐이었습니다.</p>
+    <p><strong>학부생에게 전문성을 기대하는 면접관은 없습니다.</strong> 돌리다 멈췄으면 멈춘 지점까지가 실력이고, 그건 아무것도 안 한 사람보다 훨씬 앞입니다.</p>
+  </div>
+
+  <div class="rule-card">
+    <span class="tag">새 규칙 — 이것 하나만 가져가도 됩니다</span>
+    <p>완성 여부로 거르지 말고, <strong>도달 지점을 그대로 적는다.</strong><br>
+    "못 했습니다" → <strong>"완성은 못 했지만 [ ]까지 확인했습니다"</strong></p>
+  </div>
+
+  <div class="item item--bad">
+    <h3>2. 직무 이해 — 공고를 깊이 읽지 않았다</h3>
+    <p>"왜 스캔을 하는가"에 답하지 못했습니다.</p>
+    <div class="quote quote--said">
+      <span class="qlabel">답변한 것</span>
+      "디지털 트윈을 하기 위해서는 야드 데이터가 필요하고, 그런 야드 데이터를 얻어 학습을 시켜 정확도를 높여 작업을 효율적으로 하기 위한 것으로 보입니다."
+    </div>
+    <p><strong>질문을 되돌려 말한 것</strong>이고, "정확도를 높여 효율적으로"는 어느 산업에나 붙어서 정보량이 0입니다.</p>
+
+    <div class="box box--scan">
+      <span class="tag">알아야 할 것</span>
+      <p><strong>정도관리는 분류(classification)가 아니라 계측(metrology)입니다.</strong></p>
+      <p>블록이 도면대로 만들어졌는지, 어디가 <strong>몇 mm</strong> 틀어졌는지 보려고 스캔합니다. 조립 전에 알면 수정 비용이 작고, 조립 후에 알면 큽니다.</p>
+      <p><strong>세그멘테이션은 수단</strong>입니다 — 점군에서 부재를 골라내야 비교가 되니까요. 값은 그다음 <strong>설계 모델과 겹쳐 차이를 계산하는 데서</strong> 나옵니다. 실내 세그멘테이션 90%면 논문이 되지만, <strong>정도관리는 90%로 아무것도 못 합니다.</strong></p>
+    </div>
+
+    <p><strong>아이러니</strong> — 연구실에서 하는 "객체인식"이 바로 그 수단 단계인데, 질문받고도 연결하지 못했습니다. <strong>답을 갖고 있으면서 잇지 못한 것</strong>입니다.</p>
+  </div>
+
+  <div class="item item--bad">
+    <h3>3. 구체성 — 숫자가 한 번도 안 나왔다</h3>
+    <p>30분 동안 숫자가 0개였습니다. 모델명조차 3단계 추궁 끝에 나왔습니다.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>말한 것</th><th>필요했던 것</th></tr></thead>
+        <tbody>
+          <tr><td>"사양이 낮은 부분을 적게 사용"</td><td>무엇을 줄였나 — 해상도? 배치 크기? 모델?</td></tr>
+          <tr><td>"형상이 보이기는 했으나"</td><td>어느 클래스까지? 몇 %까지 진행?</td></tr>
+          <tr><td>"여러 논문 사례"</td><td>몇 편? 어떤 것?</td></tr>
+          <tr><td>"가능할 것으로 시사됩니다"</td><td><strong>책임을 피하는 표현.</strong> "가능하다고 봅니다"로</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="item item--warn">
+    <h3>4. 지원 동기가 일반론이다</h3>
+    <p><em>"첨단 기술을 활용하여 최적화하는 일이 제게 잘 맞는다고 생각이 들어"</em> — 이 문장은 삼성중공업에도, 카카오에도, 현대차에도 그대로 붙습니다.</p>
+    <p>그리고 마무리가 <strong>"의지와 열정을 가지고 열심히 하겠습니다"</strong>였습니다. 정보량 0이고, 면접관에게는 <strong>할 말이 없을 때 쓰는 문장</strong>으로 읽힙니다.</p>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="fix">
+  <div class="sec-head"><span class="sec-num" style="color:var(--arc)">03</span><h2>고쳐 쓴 자기소개</h2></div>
+  <p class="sec-sub">같은 사람, 같은 경험입니다. 정보량만 다릅니다.</p>
+
+  <div class="quote quote--said">
+    <span class="qlabel">실제로 말한 것</span>
+    "첨단 기술을 활용하여 최적화하는 일이 제게 잘 맞는다고 생각이 들어 지원하게 되었습니다. … UR5e라는 로봇팔의 자동화에 대해 배우고 컴퓨터 서버를 통한 세그멘테이션 등을 배우게 되면서 … 만약 뽑아주신다면 <strong>의지와 열정을 가지고 열심히 하겠습니다.</strong>"
+  </div>
+
+  <div class="quote quote--fix">
+    <span class="qlabel">고친 것</span>
+    목포해양대 첨단해양모빌리티학과 김진솔입니다. 저는 <strong>3D 점군 데이터를 다뤄본 조선 전공자</strong>입니다.<br><br>
+    학과에서 UR5e 로봇팔 자동화를 접하며 인식 기술에 관심이 생겼고, <strong>S3DIS 데이터셋을 MMDetection3D로 직접 실행해봤습니다.</strong> 메모리 한계로 완성은 못 했지만 부분 형상이 나오는 것까지 확인했습니다.<br><br>
+    현재는 최적선박생산기술 연구실에서 <strong>객체인식과 깊이 추정</strong>을 다루고 있습니다.<br><br>
+    스마트야드연구 직무가 <strong>점군에서 부재를 골라내 설계와 대조하는 일</strong>이라고 이해했고, 제가 이미 손대본 영역이라 지원했습니다.
+  </div>
+
+  <div class="box box--ok">
+    <span class="tag">차이</span>
+    <p>"의지와 열정"이 <strong>한 번도 안 나오는데</strong> 훨씬 강합니다. 구체적 경험 3개가 30초 안에 들어가 있고, 마지막 문장이 <strong>공고를 읽었다는 증거</strong>가 됩니다.</p>
+  </div>
+</section>
+
+<!-- 04 -->
+<section id="plan">
+  <div class="sec-head"><span class="sec-num" style="color:var(--scan)">04</span><h2>권고 사항</h2></div>
+  <p class="sec-sub">순서가 있습니다. 위에서부터 하세요.</p>
+
+  <ol class="plan">
+    <li>
+      <span class="when">이번 주</span>
+      <span class="what"><strong>S3DIS를 다시 돌린다</strong> — Colab·Kaggle 무료 GPU
+      <small>가장 값이 큰 한 가지. ① "사양 때문에 못 했다"가 사라짐 ② <strong>숫자가 생김</strong>(데이터 규모·소요 시간·도달 클래스) — 구체성 6점의 직접 해법 ③ 기억이 복구됨. <strong>스크린샷 한 장이면 "해봤다"의 증거가 됩니다.</strong></small></span>
+    </li>
+    <li>
+      <span class="when">이번 주</span>
+      <span class="what">말버릇 하나 바꾸기 — <strong>"못 했습니다" → "완성은 못 했지만 [ ]까지 확인했습니다"</strong>
+      <small>빈칸을 채우는 습관. 오늘 실점의 대부분이 이 한 문장에서 나왔습니다</small></span>
+    </li>
+    <li>
+      <span class="when">이번 달</span>
+      <span class="what">프로필·자소서에 <strong>S3DIS / MMDetection3D / UR5e / 객체인식</strong> 4개 추가
+      <small>안 적으면 없는 것과 같습니다 — 스펙 문서에는 반영 완료</small></span>
+    </li>
+    <li>
+      <span class="when">이번 달</span>
+      <span class="what">한화오션 공고 <strong>정독</strong> — 우대사항을 그대로 옮겨 적기
+      <small>직무 이해 8점의 해법. <strong>공고가 곧 질문 목록</strong>입니다</small></span>
+    </li>
+    <li>
+      <span class="when">이번 달</span>
+      <span class="what">자기소개 <strong>30초 버전을 써서 외우기</strong>
+      <small>위 03절의 고친 버전을 본인 말로 바꿔서</small></span>
+    </li>
+    <li>
+      <span class="when">이번 학기</span>
+      <span class="what">오픽 1회 응시 · 정도관리·점군 정합 문헌 2~3편
+      <small>어학은 지원 자격이라 별건. 문헌은 직무 이해 보강</small></span>
+    </li>
+    <li>
+      <span class="when">겨울방학</span>
+      <span class="what"><strong>UR5e를 실제로 움직여본다</strong> → A4 3장 결과 문서
+      <small>"목표"라고만 말한 것을 결과물로 바꾸는 작업</small></span>
+    </li>
+  </ol>
+</section>
+
+<!-- 05 -->
+<section id="again">
+  <div class="sec-head"><span class="sec-num">05</span><h2>다시 답해볼 것</h2></div>
+  <div class="box box--arc">
+    <span class="tag">재출제</span>
+    <p><strong>박현우 팀장</strong> — "1분 정도로 간단히 자기소개 부탁드립니다."</p>
+  </div>
+  <p><strong>03절의 예시를 보지 말고</strong> 본인 말로 답해보세요. 체크할 것 세 가지입니다.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>#</th><th>확인</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1</td><td>30초 안에 <strong>구체적 경험 3개</strong>가 들어갔는가</td></tr>
+        <tr><td class="mono">2</td><td>"완성 못 했다"를 <strong>"어디까지 갔다"</strong>로 바꿨는가</td></tr>
+        <tr><td class="mono">3</td><td><strong>"의지와 열정"을 안 썼는가</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p><strong>총평.</strong> 55점은 낮은 점수지만 <strong>실력이 낮아서 나온 점수가 아닙니다.</strong> 정직성 만점, 태도 9점 — 사람으로서의 평가는 최상위입니다. 깎인 곳은 전부 <strong>"가진 것을 말하지 않아서"</strong> 생긴 실점이고, 그건 이번 주에 고칠 수 있습니다.</p>
+  <p>실제 지원까지 <strong>약 12개월</strong> 남았습니다. 지금 이 결과를 받아든 것이 2027년 9월에 받아드는 것보다 훨씬 낫습니다.</p>
+  <p class="fine">모의 면접 2026-09-05 · 한화오션 스마트야드연구 1차(비대면) 8문항 · mock-interview 스킬</p>
+</footer>
+
+</div>
+</body>
+</html>
