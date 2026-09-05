@@ -7,6 +7,12 @@
 secrets.json
 credentials.json
 
+# --- 개인정보: 진로 상담 기록 ---
+# 학점, 경제 상황, 소속 연구실, 지도교수 평가, 인터뷰 원자료가 들어 있음.
+# 이 저장소는 공개(public)이므로 절대 추적하지 말 것.
+진로_정보/
+진로_후보.md
+
 # --- 자동 동기화 로그 ---
 .claude/autosync.log
 .claude/autosync.lock
