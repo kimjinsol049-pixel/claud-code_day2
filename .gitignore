@@ -1,0 +1,37 @@
+# --- 비밀정보: 절대 GitHub에 올라가면 안 되는 것들 ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# --- 자동 동기화 로그 ---
+.claude/autosync.log
+
+# --- Windows ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- 편집기 ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# --- 언어별 빌드 산출물 ---
+node_modules/
+dist/
+build/
+.next/
+out/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.log
