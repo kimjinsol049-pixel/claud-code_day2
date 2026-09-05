@@ -12,7 +12,7 @@ function Write-Log($msg) {
     $line = "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')  $msg"
     for ($i = 0; $i -lt 3; $i++) {
         try {
-            Add-Content -Path $log -Value $line -Encoding utf8 -ErrorAction Stop
+            Add-Content -LiteralPath $log -Value $line -Encoding utf8 -ErrorAction Stop
             return
         }
         catch {
@@ -74,7 +74,10 @@ function Get-PushArgs {
 }
 
 function Sync-Repo {
-    Set-Location $repo
+    # -LiteralPath 필수: 경로에 [ ] 가 있으면(예: "0_[코드잇] ...") PowerShell이
+    # 대괄호를 와일드카드로 해석해 "경로 없음"으로 실패한다. 그러면 이 함수가
+    # 조용히 빠져나가 동기화가 아무 일도 하지 않는다.
+    Set-Location -LiteralPath $repo
 
     # git 저장소가 아니면 조용히 종료
     Invoke-Git @('rev-parse', '--is-inside-work-tree') *> $null
@@ -83,7 +86,7 @@ function Sync-Repo {
     # 병합/리베이스/체리픽 진행 중이면 절대 건드리지 않는다 (사용자 작업을 망가뜨림)
     $gitDir = Invoke-Git @('rev-parse', '--git-dir')
     foreach ($marker in 'MERGE_HEAD', 'REBASE_HEAD', 'CHERRY_PICK_HEAD', 'rebase-merge', 'rebase-apply') {
-        if (Test-Path (Join-Path $gitDir $marker)) {
+        if (Test-Path -LiteralPath (Join-Path $gitDir $marker)) {
             Write-Log "건너뜀 - $marker 진행 중"
             return
         }
@@ -125,14 +128,17 @@ function Sync-Repo {
 # --- 겹쳐 실행 방지 ------------------------------------------------------------
 # 예약 작업(30분마다) · Stop 훅 · 수동 실행이 서로 겹칠 수 있다. 한 번에 하나만 돈다.
 # 이게 없으면 한 번 느려졌을 때 실행이 쌓이면서 서로를 더 느리게 만든다.
-if (Test-Path $lock) {
-    $age = (Get-Date) - (Get-Item $lock).LastWriteTime
+# 아래 경로 조작도 전부 -LiteralPath / .NET API 로 한다. 대괄호가 든 경로에서
+# 잠금 파일을 못 찾으면 매번 새로 만들거나 영영 못 지우는 상태가 된다.
+if (Test-Path -LiteralPath $lock) {
+    $age = (Get-Date) - (Get-Item -LiteralPath $lock).LastWriteTime
     if ($age.TotalMinutes -lt 30) { exit 0 }
     Write-Log "오래된 잠금 파일 제거 ($([int]$age.TotalMinutes)분 경과)"
-    Remove-Item $lock -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath $lock -Force -ErrorAction SilentlyContinue
 }
 
-try { New-Item -ItemType File -Path $lock -ErrorAction Stop | Out-Null }
+# New-Item 에는 -LiteralPath 가 없다(PS 5.1). .NET 으로 직접 만든다.
+try { [System.IO.File]::WriteAllText($lock, '') }
 catch { exit 0 }
 
 try {
@@ -142,7 +148,7 @@ catch {
     Write-Log "오류: $($_.Exception.Message)"
 }
 finally {
-    Remove-Item $lock -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath $lock -Force -ErrorAction SilentlyContinue
 }
 
 exit 0
