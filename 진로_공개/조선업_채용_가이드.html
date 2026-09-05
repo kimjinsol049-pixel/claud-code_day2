@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>조선업 채용 가이드 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Noto+Serif+KR:wght@500;700&display=swap">
+<style>
+:root{
+  --ground:#F4F6F7; --surface:#FFFFFF; --surface-sunk:#EAEEF0;
+  --ink:#101A22; --ink-soft:#3A4A55; --steel:#5A6E7A; --steel-faint:#8698A3;
+  --rule:#D3DBDF; --rule-strong:#B4C1C8;
+  --arc:#C25A16; --arc-soft:#F3E3D6;
+  --scan:#0E7C86; --scan-soft:#DCEDEE;
+  --crit:#A32017; --crit-soft:#F7E2E0;
+  --ok:#2C6B48; --ok-soft:#DEEBE3;
+  --display:"Noto Serif KR","Nanum Myeongjo",serif;
+  --body:"IBM Plex Sans KR","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono","D2Coding",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D141A; --surface:#141E26; --surface-sunk:#1B2831;
+    --ink:#E6EDF1; --ink-soft:#B7C6D0; --steel:#8FA3AF; --steel-faint:#697D89;
+    --rule:#26353F; --rule-strong:#384A56;
+    --arc:#F0873C; --arc-soft:#3A2415;
+    --scan:#4FBCC5; --scan-soft:#0F3034;
+    --crit:#F08078; --crit-soft:#3A1B18;
+    --ok:#6FC195; --ok-soft:#15301F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D141A; --surface:#141E26; --surface-sunk:#1B2831;
+  --ink:#E6EDF1; --ink-soft:#B7C6D0; --steel:#8FA3AF; --steel-faint:#697D89;
+  --rule:#26353F; --rule-strong:#384A56;
+  --arc:#F0873C; --arc-soft:#3A2415;
+  --scan:#4FBCC5; --scan-soft:#0F3034;
+  --crit:#F08078; --crit-soft:#3A1B18;
+  --ok:#6FC195; --ok-soft:#15301F;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--ground); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased}
+.wrap{max-width:920px; margin:0 auto; padding:0 24px 96px}
+
+.masthead{padding:56px 0 32px; border-bottom:3px solid var(--ink)}
+.eyebrow{font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--arc); display:flex; flex-wrap:wrap; gap:6px 14px; margin-bottom:18px}
+.eyebrow span:not(:last-child)::after{content:" ·"; color:var(--steel-faint)}
+h1{font-family:var(--display); font-weight:700; font-size:clamp(34px,6vw,50px); line-height:1.18; letter-spacing:-.02em; margin:0 0 18px; text-wrap:balance}
+.thesis{font-size:clamp(16px,2.2vw,18.5px); line-height:1.65; color:var(--ink-soft); max-width:60ch; margin:0; font-weight:300}
+.thesis b{font-weight:600; color:var(--ink); box-shadow:inset 0 -.45em 0 var(--arc-soft)}
+
+section{margin-top:60px; scroll-margin-top:24px}
+.sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:8px; flex-wrap:wrap}
+.sec-num{font-family:var(--mono); font-size:12px; font-weight:600; color:var(--arc); letter-spacing:.08em; padding-top:.35em}
+h2{font-family:var(--display); font-weight:700; font-size:clamp(23px,3.6vw,30px); letter-spacing:-.015em; margin:0; line-height:1.3; text-wrap:balance}
+.sec-sub{color:var(--steel); font-size:14.5px; margin:0 0 26px; max-width:62ch; line-height:1.6}
+h3{font-family:var(--display); font-weight:500; font-size:19px; margin:34px 0 12px; line-height:1.4; letter-spacing:-.01em}
+h4{font-family:var(--mono); font-weight:600; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--steel); margin:24px 0 9px}
+p{margin:0 0 14px; max-width:66ch}
+a{color:var(--scan); text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--arc); outline-offset:3px; border-radius:2px}
+strong{font-weight:600}
+code{font-family:var(--mono); font-size:.88em; background:var(--surface-sunk); padding:.1em .35em; border-radius:3px}
+
+.box{padding:20px 24px; margin:22px 0}
+.box p{margin:0 0 10px; max-width:63ch} .box p:last-child{margin-bottom:0}
+.box .tag{font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:8px}
+.box--crit{background:var(--crit-soft); border-left:4px solid var(--crit)} .box--crit .tag{color:var(--crit)}
+.box--arc{background:var(--arc-soft); border-left:4px solid var(--arc)} .box--arc .tag{color:var(--arc)}
+.box--scan{background:var(--scan-soft); border-left:4px solid var(--scan)} .box--scan .tag{color:var(--scan)}
+.quote{font-family:var(--mono); font-size:13.5px; line-height:1.6; background:var(--surface); padding:12px 14px; margin:12px 0; border:1px solid var(--rule); color:var(--ink); max-width:none}
+
+.scroller{overflow-x:auto; border:1px solid var(--rule); background:var(--surface)}
+table{border-collapse:collapse; width:100%; min-width:600px; font-size:14px}
+th,td{padding:11px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--rule)}
+thead th{font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--steel); background:var(--surface-sunk); border-bottom:1px solid var(--rule-strong); white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-sunk)}
+td.num,td.mono{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+td.co{font-weight:600; white-space:nowrap}
+.tbl-note{font-size:12.5px; color:var(--steel); line-height:1.55; margin:8px 0 0; max-width:70ch}
+.pill{display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.05em; padding:2px 7px; border-radius:2px; white-space:nowrap}
+.pill--ok{background:var(--ok-soft); color:var(--ok)}
+.pill--warn{background:var(--arc-soft); color:var(--arc)}
+.pill--crit{background:var(--crit-soft); color:var(--crit)}
+.pill--flat{background:var(--surface-sunk); color:var(--steel)}
+
+.posting{border:1px solid var(--rule-strong); background:var(--surface); margin:0 0 18px}
+.posting-head{padding:15px 20px; border-bottom:1px solid var(--rule); background:var(--surface-sunk); display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap}
+.posting-head b{font-size:16px}
+.posting-head .src{font-family:var(--mono); font-size:11px; color:var(--steel)}
+.posting-body{padding:18px 20px}
+.excerpt{font-family:var(--mono); font-size:13px; line-height:1.68; border-left:2px solid var(--scan); padding-left:14px; color:var(--ink-soft); margin:0 0 14px}
+
+.cal{border:1px solid var(--rule); background:var(--surface); padding:20px 18px; overflow-x:auto}
+.cal-grid{min-width:740px}
+.cal-row{display:grid; grid-template-columns:150px repeat(12,1fr); gap:2px; align-items:center; margin-top:5px}
+.cal-row--head{margin-top:0; padding-bottom:6px; border-bottom:1px solid var(--rule-strong)}
+.cal-row--head span{font-family:var(--mono); font-size:10.5px; color:var(--steel); text-align:center}
+.cal-row--head .hot{color:var(--arc); font-weight:600}
+.cal-name{font-size:12.5px; line-height:1.3; padding-right:12px}
+.cal-name b{font-weight:600; display:block}
+.cal-name em{font-family:var(--mono); font-size:10.5px; color:var(--steel); font-variant-numeric:tabular-nums; font-style:normal; font-weight:400}
+.cal-band{font-family:var(--mono); font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--steel-faint); margin:16px 0 2px; padding-bottom:3px; border-bottom:1px solid var(--rule)}
+.bar{height:20px; border-radius:2px; display:grid; place-items:center; font-family:var(--mono); font-size:10px; font-weight:500; white-space:nowrap}
+.bar--arc{background:var(--arc); color:#fff}
+.bar--scan{background:var(--scan); color:#fff}
+.bar--flat{background:var(--surface-sunk); color:var(--steel); border:1px solid var(--rule-strong)}
+
+.steps{list-style:none; margin:0; padding:0; position:relative}
+.steps::before{content:""; position:absolute; left:19px; top:12px; bottom:12px; width:2px; background:var(--rule)}
+.step{position:relative; padding-left:58px; margin-bottom:30px}
+.step:last-child{margin-bottom:0}
+.marker{position:absolute; left:0; top:0; width:40px; height:40px; border-radius:50%; background:var(--surface); border:2px solid var(--rule-strong); display:grid; place-items:center; font-family:var(--mono); font-size:13px; font-weight:600; color:var(--steel); z-index:1}
+.step--now .marker{background:var(--arc); border-color:var(--arc); color:#fff}
+.step h3{margin:0 0 4px; font-weight:700; font-size:19px}
+.step .when{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--steel); display:block; margin-bottom:2px; padding-top:3px}
+.step p{font-size:14.5px; color:var(--ink-soft); margin:0 0 12px; max-width:60ch}
+.tasks{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.task{background:var(--surface); padding:11px 14px; font-size:14.5px; line-height:1.55}
+.task small{display:block; color:var(--steel); font-size:12.5px; margin-top:2px; line-height:1.5}
+
+.asks{counter-reset:q; list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px}
+.asks li{counter-increment:q; background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--scan); padding:13px 16px 13px 46px; position:relative; font-size:14.5px; line-height:1.6}
+.asks li::before{content:"Q" counter(q); position:absolute; left:14px; top:13px; font-family:var(--mono); font-size:11px; font-weight:600; color:var(--scan)}
+.asks .why{display:block; color:var(--steel); font-size:12.5px; margin-top:4px}
+
+.srcs{list-style:none; margin:0; padding:0; display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.srcs li{background:var(--surface); padding:10px 14px; font-size:13.5px; line-height:1.5}
+.srcs b{display:block; font-size:12px; font-family:var(--mono); color:var(--steel); font-weight:600; margin-bottom:3px; letter-spacing:.05em}
+
+footer{margin-top:72px; padding-top:24px; border-top:1px solid var(--rule); font-size:13px; color:var(--steel); line-height:1.65}
+footer p{max-width:70ch}
+footer .fine{font-family:var(--mono); font-size:11.5px; color:var(--steel-faint); margin-top:14px}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+@media print{body{background:#fff} table,.cal-grid{min-width:0} section,.step{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow"><span>조선·해양 채용 리서치</span><span>2026.09</span><span>공개 자료 기반</span></div>
+  <h1>조선업 채용 가이드 2026</h1>
+  <p class="thesis">
+    국내 조선·해양 분야 채용 정보를 한 장으로 정리했습니다.
+    가장 먼저 확인해야 할 것은 회사도 직무도 아니라 <b>어학 요건</b>입니다 —
+    <b>대형 3사 중 2곳은 토익을 받지 않습니다.</b>
+  </p>
+</header>
+
+<!-- 01 -->
+<section id="lang">
+  <div class="sec-head"><span class="sec-num">01</span><h2>어학 — 토익만 준비하면 지원조차 못 합니다</h2></div>
+  <p class="sec-sub">이 조사에서 나온 가장 실용적인 발견입니다. 다른 준비보다 먼저 확인하세요.</p>
+
+  <div class="box box--crit">
+    <span class="tag">배제 조항</span>
+    <p class="quote">삼성중공업 2026 상반기 3급 신입 공고<br>“영어회화자격 필수 — <strong>OPIc 및 토익스피킹에 한함</strong>”</p>
+    <p>“<strong>~에 한함</strong>”은 우대가 아닙니다. <strong>토익 990점을 받아와도 지원 자격이 없습니다.</strong></p>
+    <p>준비를 안 해서가 아니라 <strong>엉뚱한 시험을 준비해서</strong> 떨어지는 것이 조선업 지원에서 가장 흔한 실패입니다.</p>
+  </div>
+
+  <div class="scroller">
+    <table>
+      <thead><tr><th>대상</th><th>어학 요건</th><th>토익</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td class="co">HD현대 그룹</td><td class="mono">TOEIC Speaking 120<br>또는 OPIc IM2 이상</td><td><span class="pill pill--crit">불인정</span></td><td>중공업·삼호·미포·한국조선해양 공통. 연구직도 동일</td></tr>
+        <tr><td class="co">삼성중공업</td><td class="mono">OPIc · 토익스피킹<br>“에 한함”</td><td><span class="pill pill--crit">불인정</span></td><td>배제 조항</td></tr>
+        <tr><td class="co">한화오션</td><td>공고에 명시 없음</td><td><span class="pill pill--flat">불명</span></td><td>하한선이 없을 뿐 서류 상대평가에는 쓰임</td></tr>
+        <tr><td class="co">대학원 입시</td><td>학교별 상이. 토익·텝스 기준을 두는 곳이 많음</td><td><span class="pill pill--ok">필요할 수 있음</span></td><td>진학 계획이 있으면 별도 확인 필수</td></tr>
+        <tr><td class="co">한국선급</td><td>점수 기준 없음 · <strong>면접에서 영어면접 30점</strong></td><td><span class="pill pill--flat">무관</span></td><td>실제 말하기 능력이 그대로 평가됨</td></tr>
+        <tr><td class="co">중형 조선소</td><td>기준이 낮거나 없음</td><td><span class="pill pill--ok">대체로 인정</span></td><td>어학 문턱이 가장 낮은 구간</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tbl-note">HD현대는 2025 상반기 연구직, 2025 하반기, 2026 상반기 <strong>3개 공고에서 연속 동일</strong>하게 확인되었습니다 — 일시적 기준이 아니라 그룹 표준입니다.</p>
+
+  <div class="box box--arc">
+    <span class="tag">역산 — 언제까지 따야 하나</span>
+    <p>어학 자격은 <strong>접수 시점에 이미 있어야</strong> 합니다. 오픽은 성적 발표까지 약 1주가 걸리고, 재응시에는 간격 제한이 있습니다. 여러 번 볼 것을 전제하면 <strong>최소 3~4개월 전에 첫 응시가 끝나 있어야</strong> 합니다.</p>
+    <p>→ <strong>3월 상반기 공채를 노린다면 전년도 11~12월에 확보 완료.</strong></p>
+    <p><strong>목표 등급은 생각보다 낮습니다.</strong> <code>OPIc IM2</code>는 중급 초입이고 <code>TOEIC Speaking 120</code>은 6단계 중 하위~중위권 컷입니다. 유학파 수준을 요구하는 게 아니라 <strong>준비하면 통과하는 자격 요건</strong>입니다.</p>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="big3">
+  <div class="sec-head"><span class="sec-num">02</span><h2>대형 3사 비교</h2></div>
+  <p class="sec-sub">2026년 공고 기준입니다. 연도별로 1~2주씩 움직이므로 <strong>구조와 패턴</strong>을 보세요.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>항목</th><th>한화오션</th><th>HD현대</th><th>삼성중공업</th></tr></thead>
+      <tbody>
+        <tr><td class="co">주 근무지</td><td>거제 옥포</td><td>울산 · 영암(삼호) · 판교</td><td>판교 · 거제</td></tr>
+        <tr><td class="co">어학</td><td>명시 없음</td><td class="mono">TS 120 / OPIc IM2</td><td class="mono">OPIc · 토익스피킹만</td></tr>
+        <tr><td class="co">인적성</td><td><span class="pill pill--ok">없음</span></td><td><span class="pill pill--flat">확인 필요</span></td><td><span class="pill pill--warn">GSAT</span></td></tr>
+        <tr><td class="co">전형</td><td>서류 → 1차 비대면 → 2차 대면 → 검진</td><td>서류 → 1차 → 2차 → 검진</td><td>서류 → 직무적합성 → GSAT(4월) → 면접(5월)</td></tr>
+        <tr><td class="co">상반기 접수</td><td class="mono">3.16–3.31</td><td class="mono">3.3–3.24</td><td class="mono">3.10–3.17 <span class="pill pill--warn">8일</span></td></tr>
+        <tr><td class="co">하반기 접수</td><td class="mono">9.14–9.30</td><td>9월 중하순</td><td>9월 하순</td></tr>
+        <tr><td class="co">3D·디지털 직무</td><td><strong>스마트야드연구 · AX</strong></td><td>미래기술연구원 · 빅데이터/AI</td><td>자동화솔루션 · R&amp;D</td></tr>
+        <tr><td class="co">조선 직무</td><td>설계 · 생산관리 · 연구개발</td><td>기본설계 · 상세설계 · 생산관리 · 생산지원 · 기술영업</td><td>기본설계 · 조선설계 · 공정관리 · PM · R&amp;D</td></tr>
+        <tr><td class="co">특이사항</td><td>방위산업체 — 신원조사</td><td>그룹 공채 8개 계열사 통합</td><td>3사 중 경쟁률 최고</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tbl-note"><strong>3사 접수가 3월 초~중순 3주에 몰려 있습니다.</strong> 삼성중공업은 접수 기간이 8일로 가장 짧습니다. 이 3주는 준비 기간이 아니라 <strong>실행 기간</strong>입니다 — 자기소개서를 그때 쓰기 시작하면 늦습니다.</p>
+</section>
+
+<!-- 03 -->
+<section id="posting">
+  <div class="sec-head"><span class="sec-num">03</span><h2>실제 공고 — 조선업이 지금 뽑는 사람</h2></div>
+  <p class="sec-sub">공고 문구가 산업의 방향을 그대로 보여줍니다. 조선업이 어디에 투자하고 있는지 알고 싶다면 홍보자료보다 채용 공고를 보세요.</p>
+
+  <div class="posting">
+    <div class="posting-head"><b>한화오션 — 스마트야드연구 담당자</b><span class="src">근무지 거제 · 공고 원문 발췌</span></div>
+    <div class="posting-body">
+      <h4>주요 업무</h4>
+      <div class="excerpt">
+        생산 계획 및 운영 최적화, 공정과 레이아웃에 대한 시뮬레이션, <strong>디지털 트윈 기술개발</strong><br>
+        야드/공장 생산성 평가를 위한 데이터 기반 의사결정 지원<br>
+        <strong>디지털 트윈 기반 모니터링 및 변화 탐지 기술 개발</strong><br>
+        생산 장비 무인화를 위한 요소 기술 연구 — <strong>공정인식, 위치인식, 자율주행</strong>
+      </div>
+      <h4>우대사항</h4>
+      <div class="excerpt">
+        디지털 트윈 기반 시뮬레이션 경험<br>
+        생산 무인화 프로젝트 경험<br>
+        <strong>SLAM 구현 및 관련 프로젝트 경험</strong>
+      </div>
+      <h4>필수 자격요건 전공</h4>
+      <div class="excerpt">산업공학, 정보통신공학, 컴퓨터공학, 전기전자공학, 인공지능 관련전공</div>
+
+      <div class="box box--scan" style="margin:16px 0 0">
+        <span class="tag">이 공고에서 읽어야 할 것</span>
+        <p><strong>전공 목록에 조선해양공학이 없습니다.</strong> 조선소의 생산 연구 자리가 <strong>IT 계열 공고로 나가고 있다</strong>는 뜻입니다.</p>
+        <p>이 자리는 <strong>“조선 전공자 중 코딩이 되는 사람”과 “컴공 전공자 중 조선을 아는 사람”이 만나는 지점</strong>이고, 양쪽 다 희소합니다. 조선 전공으로 이 문을 통과하려면 대체로 둘 중 하나가 필요합니다 — <strong>석사 학위와 관련 논문</strong>, 또는 <strong>일반 공채로 입사한 뒤 내부 이동</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section id="map">
+  <div class="sec-head"><span class="sec-num">04</span><h2>회사 지도</h2></div>
+
+  <h3>대형 조선소</h3>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>회사</th><th>근무지</th><th>특징</th><th>초봉·규모</th></tr></thead>
+      <tbody>
+        <tr><td class="co">한화오션</td><td>거제 옥포</td><td>스마트야드연구·AX 조직 운영. <strong>3사 중 유일하게 인적성 시험 없음</strong></td><td class="num">—</td></tr>
+        <tr><td class="co">HD현대삼호</td><td>전남 영암</td><td>목포 생활권. 신입 <strong>멘토 1:1 매칭</strong> 운영. 건조 야드 중심(R&amp;D는 판교·울산)</td><td class="num">4,663–5,138만원</td></tr>
+        <tr><td class="co">HD현대중공업</td><td>울산 동구</td><td>그룹 조선 본진. 생산관리·생산지원 직무 다수</td><td class="num">—</td></tr>
+        <tr><td class="co">HD한국조선해양</td><td>판교 · 울산</td><td><strong>미래기술연구원</strong> — 스마트 제조 시스템, 신소재·신공법 응용 생산기술. 석사 트랙</td><td class="num">석사 다수</td></tr>
+        <tr><td class="co">삼성중공업</td><td>판교 · 거제</td><td><strong>3X 전략</strong>(AI·Digital·Robotics). 자동화솔루션 직무</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>중형 조선소 — 어학 문턱이 낮은 구간</h3>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>회사</th><th>근무지</th><th>규모·연봉</th><th>채용</th><th>특징</th></tr></thead>
+      <tbody>
+        <tr><td class="co">대한조선</td><td>전남 해남</td><td class="num">577명<br>평균 5,477만원</td><td><span class="pill pill--ok">상시</span></td><td>중형 탱커 건조. 전남권 유일한 조선소급 사업장</td></tr>
+        <tr><td class="co">케이조선</td><td>경남 진해</td><td class="num">중형</td><td class="mono">~2.4 마감</td><td>중형 MR탱커. <strong>대기업 공채보다 일정이 이름</strong></td></tr>
+        <tr><td class="co">HJ중공업</td><td>부산 영도</td><td class="num">중견</td><td><span class="pill pill--flat">수시</span></td><td>함정·관공선 비중 — 국가 발주 기반이라 경기 변동에 덜 흔들림</td></tr>
+        <tr><td class="co">세진중공업</td><td>울산</td><td class="num">중견</td><td><span class="pill pill--flat">미확인</span></td><td>블록·데크하우스 제작 전문 — <strong>정도관리가 사업의 핵심</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>연구기관 · 공공기관</h3>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>기관</th><th>근무지</th><th>진입 조건</th><th>연봉</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td class="co">KRISO</td><td>대전 유성 · 거제 분원</td><td><span class="pill pill--crit">석사 필수</span> 또는 학사+경력 3년</td><td class="num">—</td><td>선박해양플랜트연구소. 거제 분원은 조선 3사 클러스터 안</td></tr>
+        <tr><td class="co">중소조선연구원</td><td>부산</td><td>수시 채용</td><td class="num">—</td><td><strong>스마트야드 전문인력양성 5년 사업 주관</strong></td></tr>
+        <tr><td class="co">한국선급 (KR)</td><td>부산 명지 · 서울</td><td><span class="pill pill--crit">신입 자리 극소</span></td><td class="num">5,400–6,700만원</td><td>2026년 1차 <strong>47명 중 신입은 3명.</strong> 블라인드 채용</td></tr>
+        <tr><td class="co">KOMSA</td><td>세종 + 전국 순환</td><td>조선·설계·연구 경력 인정</td><td class="num">약 3,156만원</td><td>해양교통안전공단. 순환 배치 있음</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box--arc">
+    <span class="tag">한국선급 — 신입에게 열린 문은 하나뿐</span>
+    <p>2026년 1차 채용 47명 중 신입 지원이 가능한 자리는 <strong>단 3명</strong>이었고, 전부 <strong>AI융합기술연구 및 AI서비스 개발</strong> 분야였습니다. 학사 지원 가능, 전공에 조선해양공학 포함, 근무지 서울, 연봉 <span class="mono">5,400만원</span>.</p>
+    <p><strong>검사직(선체·기관 각 14명)은 전원 경력직</strong>이며 선박안전법상 선박검사원 자격이 필요합니다. 그 자격의 표준 경로는 해기사 면허와 승선 경력입니다.</p>
+    <p>→ 한국선급은 <strong>“신입으로 가는 곳”이 아니라 “경력 5~10년 후에 가는 곳”</strong>으로 보는 편이 정확합니다.</p>
+  </div>
+
+  <h3>3D 계측 · 스마트야드 기술기업</h3>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>회사</th><th>하는 일</th><th>규모·연봉</th></tr></thead>
+      <tbody>
+        <tr><td class="co">삼인이엔에스</td><td>3D 정도관리 시스템 — <strong>전세계 150여 조선소에서 사용</strong>. AEC(건설) 산업으로 확장 중</td><td class="num">평균 5,018만원<br>신입 3,500만원~</td></tr>
+        <tr><td class="co">아비커스</td><td>HD현대 자율운항 자회사. <strong>영상처리 딥러닝 · SLAM/센서융합.</strong> 2020년 세계 최초 딥러닝 기반 항해보조시스템 상용화</td><td class="num">약 95명<br>평균 5,932만원</td></tr>
+        <tr><td class="co">씨드로닉스</td><td>선박·항만 모니터링 AI (NAVISS·AVISS). 센서퓨전·영상처리</td><td class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tbl-note">이 회사들이 파는 기술은 <strong>대형 조선소가 사서 쓰는 것</strong>이기도 합니다. 3D 정도관리는 조선소 정도관리부가, SLAM·영상처리는 한화오션 스마트야드연구가, 모니터링은 삼성중공업 자동화솔루션이 같은 방향으로 다룹니다. <strong>같은 일을 어느 규모의 조직에서 할 것인가</strong>의 선택입니다.</p>
+</section>
+
+<!-- 05 -->
+<section id="calendar">
+  <div class="sec-head"><span class="sec-num">05</span><h2>채용 캘린더</h2></div>
+  <p class="sec-sub">조선업 신입 채용은 <strong>3월과 9월, 연 2회</strong>입니다. 2026년 실적 기준.</p>
+  <div class="cal">
+    <div class="cal-grid">
+      <div class="cal-row cal-row--head">
+        <span></span><span>1월</span><span>2월</span><span class="hot">3월</span><span>4월</span><span>5월</span><span>6월</span><span>7월</span><span>8월</span><span class="hot">9월</span><span>10월</span><span>11월</span><span>12월</span>
+      </div>
+      <div class="cal-band">대형 3사 공채</div>
+      <div class="cal-row"><div class="cal-name"><b>HD현대 그룹</b><em>3.3–3.24 · 9월 중하순</em></div><div class="bar bar--arc" style="grid-column:4/5"></div><div class="bar bar--arc" style="grid-column:10/11"></div></div>
+      <div class="cal-row"><div class="cal-name"><b>삼성중공업</b><em>3.10–3.17 · 9월 하순</em></div><div class="bar bar--arc" style="grid-column:4/5"></div><div class="bar bar--arc" style="grid-column:10/11"></div></div>
+      <div class="cal-row"><div class="cal-name"><b>한화오션</b><em>3.16–3.31 · 9.14–9.30</em></div><div class="bar bar--arc" style="grid-column:4/5"></div><div class="bar bar--arc" style="grid-column:10/11"></div></div>
+      <div class="cal-row"><div class="cal-name"><b>HD현대삼호</b><em>3.17–4.20</em></div><div class="bar bar--arc" style="grid-column:4/6"></div></div>
+      <div class="cal-band">별도 트랙</div>
+      <div class="cal-row"><div class="cal-name"><b>HD현대 연구직</b><em>7.30–8.10 · 석사 다수</em></div><div class="bar bar--scan" style="grid-column:8/10"></div></div>
+      <div class="cal-row"><div class="cal-name"><b>한국선급</b><em>4.6–4.23</em></div><div class="bar bar--flat" style="grid-column:5/6"></div></div>
+      <div class="cal-row"><div class="cal-name"><b>케이조선</b><em>~2.4 마감</em></div><div class="bar bar--flat" style="grid-column:3/4"></div></div>
+      <div class="cal-band">기준선</div>
+      <div class="cal-row"><div class="cal-name"><b>어학 확보 데드라인</b><em>3월 공채 역산</em></div><div class="bar bar--flat" style="grid-column:12/14">확보 완료</div></div>
+      <div class="cal-row"><div class="cal-name"><b>상시 · 수시</b><em>대한조선 · KRISO 등</em></div><div class="bar bar--flat" style="grid-column:2/14">연중 지원 가능</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section id="prep">
+  <div class="sec-head"><span class="sec-num">06</span><h2>무엇부터 준비하나</h2></div>
+  <p class="sec-sub">조선·해양 계열 학부생 기준입니다. 순서가 중요합니다 — 앞 단계가 뒤 단계의 전제입니다.</p>
+
+  <ol class="steps">
+    <li class="step step--now">
+      <span class="marker">1</span><span class="when">가장 먼저</span>
+      <h3>어학 — 목표를 정하기 전에 한 번 응시</h3>
+      <p>지원할 회사가 어떤 시험을 인정하는지 먼저 확인하고, <strong>목표 등급을 정하지 말고 일단 한 번 보세요.</strong> 현재 위치를 모르면 계획이 서지 않습니다.</p>
+      <ul class="tasks">
+        <li class="task">지원 후보군의 인정 시험 확인 — <strong>오픽인가 토익인가</strong><small>대기업은 스피킹, 대학원·공공기관은 점수형인 경우가 많습니다</small></li>
+        <li class="task">현재 등급 실측 1회<small>낮게 나와도 손해가 아닙니다. 출발점을 아는 것이 목적</small></li>
+      </ul>
+    </li>
+    <li class="step">
+      <span class="marker">2</span><span class="when">2~3학년</span>
+      <h3>결과물 하나 만들기</h3>
+      <p>자격증보다 <strong>결과물</strong>입니다. 특히 3D·데이터·자동화 쪽 직무는 “해봤다”를 증명할 수 있느냐가 갈립니다.</p>
+      <ul class="tasks">
+        <li class="task"><strong>졸업 논문</strong>을 지원 분야와 같은 주제로<small>졸업 요건·포트폴리오·지원서 재료가 한 번에 해결됩니다</small></li>
+        <li class="task">코드나 데이터 작업이 있다면 <strong>실행 가능한 형태</strong>로 정리<small>저장소 하나</small></li>
+        <li class="task"><strong>A4 3~5장 결과 문서</strong> — 문제 정의 / 방법 / 결과 / 한계<small>면접관은 코드를 읽지 않습니다. 잘 정리된 문서를 읽습니다</small></li>
+      </ul>
+    </li>
+    <li class="step">
+      <span class="marker">3</span><span class="when">3~4학년</span>
+      <h3>현장을 한 번은 보기</h3>
+      <p>견학이든 현장실습이든 인턴이든, <strong>안 해보고 판단하지 마세요.</strong> 조선소를 본 적 없이 “조선소가 맞을까”를 고민하는 건 답이 나오지 않습니다.</p>
+      <ul class="tasks">
+        <li class="task">학과·취업지원팀에 <strong>산학협력·현장실습 트랙</strong> 확인</li>
+        <li class="task"><strong>산학장학생 제도</strong> 존재 여부 확인<small>있다면 등록금과 입사가 함께 해결됩니다</small></li>
+        <li class="task">학과의 <strong>ABEEK(공학교육인증)</strong> 이수 여부 확인<small>삼성중공업 명시 우대사항. 확인만 하면 되는 항목</small></li>
+      </ul>
+    </li>
+    <li class="step">
+      <span class="marker">4</span><span class="when">지원 직전 학기</span>
+      <h3>공고를 미리 읽기</h3>
+      <p>지원하지 않아도 됩니다. <strong>1년 뒤 마주할 문서를 미리 보는 것</strong>만으로도 준비할 것이 명확해집니다.</p>
+      <ul class="tasks">
+        <li class="task">3월 공고를 실제로 열어보고 <strong>자격요건과 우대사항을 그대로 옮겨 적기</strong><small>우대사항 목록이 곧 준비 목록입니다</small></li>
+        <li class="task"><strong>여러 곳에 동시 지원</strong>이 표준입니다<small>한 곳만 쓰는 것은 전략이 아니라 손실</small></li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<!-- 07 -->
+<section id="interview">
+  <div class="sec-head"><span class="sec-num">07</span><h2>면접에서 물어볼 것</h2></div>
+  <p class="sec-sub">회사가 나를 평가하는 자리이기도 하지만, <strong>내가 회사를 확인하는 유일한 기회</strong>이기도 합니다. 연봉보다 부서 구조가 근속을 좌우합니다.</p>
+  <ol class="asks">
+    <li>제가 배치될 부서는 몇 명 규모인가요?<span class="why">부서가 작을수록 사수 한 명이 곧 근무 환경이 됩니다</span></li>
+    <li>부서 간 순환 배치나 직무 전환 기회가 있나요? 주기는 어떻게 되나요?<span class="why">순환이 있으면 맞지 않아도 몇 년 뒤 벗어날 수 있습니다</span></li>
+    <li>신입 교육은 사수 1:1 방식인가요, 팀 단위인가요?<span class="why">1:1 멘토 방식은 배우기 쉽지만 사람 운에 크게 좌우됩니다</span></li>
+  </ol>
+  <p class="tbl-note">건방진 질문이 아닙니다. <strong>자기 조건을 아는 지원자로 보입니다.</strong> 그리고 이 답에 따라 입사 후 몇 년이 갈립니다.</p>
+</section>
+
+<!-- 08 -->
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">08</span><h2>출처</h2></div>
+  <p class="sec-sub">전부 공개 자료입니다. 지원 전에 반드시 각 사 공식 공고에서 최신 내용을 확인하세요.</p>
+  <ul class="srcs">
+    <li><b>채용 공식</b><a href="https://recruit.hd.com/kr/mainLayout/apply">HD현대 채용</a> · <a href="https://recruit-hanwhaocean.com/ko/intro">한화오션 채용</a> · <a href="https://recruit-shi.com/">삼성중공업 채용</a> · <a href="https://www.hshi.co.kr/">HD현대삼호</a></li>
+    <li><b>어학 요건 근거</b>HD현대 2026 상반기 신입 모집 공고(서울대 기계공학부 게시) · HD현대 '25(상) 연구직 모집(성균관대 기계공학부 게시) · 삼성중공업 2026 상반기 3급 신입 공고 · 한화오션 2026 하반기 공고</li>
+    <li><b>연구·공공</b><a href="https://www.kriso.re.kr/menu.es?mid=a10402010000">KRISO 채용안내</a> · <a href="https://rims.applyin.co.kr/jobs/">중소조선연구원</a> · <a href="https://krs.career.co.kr/">한국선급 채용</a> · <a href="https://www.komsa.or.kr/">KOMSA</a></li>
+    <li><b>중형 조선소</b><a href="https://www.daehanship.com/recruit">대한조선</a> · <a href="https://kshipbuilding.applyin.co.kr/jobs/20732">케이조선</a> · HJ중공업 · 대선조선</li>
+    <li><b>기술기업</b>삼인이엔에스 · <a href="https://www.wanted.co.kr/company/20313">아비커스</a> · 씨드로닉스</li>
+    <li><b>기업 정보 집계</b>캐치 · 사람인 · 잡코리아 · 링커리어 · 자소설닷컴 (연봉·규모 집계값 출처)</li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>이 문서의 한계.</strong> 채용 일정과 자격 요건은 2025~2026년 공고 기준이며, 연도별로 달라집니다. <strong>구조와 패턴</strong>을 참고하고 날짜·자격은 원문에서 확인하세요. 연봉은 상당수가 공식 발표가 아니라 채용 사이트 집계값입니다.</p>
+  <p>목포해양대학교 AI 리터러시 교육 과정에서 AI를 활용해 조사·정리했습니다. 개인 프로필이나 진로 상담 내용은 포함되어 있지 않습니다.</p>
+  <p class="fine">작성 2026-09-05 · 공개 자료 기반 조사</p>
+</footer>
+
+</div>
+</body>
+</html>
