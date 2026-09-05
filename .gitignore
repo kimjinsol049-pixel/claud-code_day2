@@ -9,6 +9,7 @@ credentials.json
 
 # --- 자동 동기화 로그 ---
 .claude/autosync.log
+.claude/autosync.lock
 
 # --- Windows ---
 Thumbs.db
